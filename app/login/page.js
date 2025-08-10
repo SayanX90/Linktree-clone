@@ -3,55 +3,63 @@ import Link from "next/link";
 
 const Login = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-yellow-900 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-yellow-900 flex items-center justify-center p-4 sm:p-6">
       {/* Signup Card */}
-      <div className="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl border border-yellow-500/50">
-        <h1 className="text-5xl font-serif font-bold text-black text-center mb-2">
+      <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-lg sm:shadow-2xl border border-yellow-500/30 sm:border-yellow-500/50 mx-2">
+      
+        {/* Back Button */}
+        <Link href="/"
+          className="inline-flex items-center gap-1 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg  text-yellow-600 hover:text-yellow-700 hover:underline transition-colors duration-200 px-2 py-1 sm:px-3 sm:py-1.5">
+          <span className="text-lg sm:text-xl">←</span>
+          <span>Back to Home</span>
+        </Link>
+
+        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-black text-center mb-2">
           Join Linktree
         </h1>
-        <p className="text-center text-black mb-6">
+        <p className="text-center text-black text-sm sm:text-base mb-4 sm:mb-6">
           Sign up for a luxurious experience!
         </p>
 
         {/* Email Input */}
-        <div className="mb-4">
+        <div className="mb-3 sm:mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-bold text-black mb-1"
+            className="block text-xs sm:text-sm font-bold text-black mb-1"
           > Email Address
           </label>
           <input
             type="email"
             id="email"
-            className="w-full p-3 border border-gray-300 rounded-md text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            className="w-full p-2 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-md text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             placeholder="Enter your email"
           />
         </div>
 
         {/* Sign Up Button */}
-        <button className="w-full bg-yellow-500 text-black rounded-md py-3 mb-4 hover:bg-yellow-600 hover:shadow-lg  transition-all duration-300">
+        <button className="w-full bg-yellow-500 text-black text-sm sm:text-base rounded-md py-2 sm:py-3 mb-3 sm:mb-4 hover:bg-yellow-600 hover:shadow-lg transition-all duration-300">
           Sign Up
         </button>
 
         {/* Terms Notice */}
-        <p className="text-xs text-black text-center mb-6">
+        <p className="text-xs text-black text-center mb-4 sm:mb-6">
           By signing up, you agree to our privacy policy, terms of service, and
           to receive updates and offers.
         </p>
 
         {/* Divider */}
-        <div className="relative my-6">
+        <div className="relative my-4 sm:my-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300"></div>
           </div>
-          <div className="relative flex justify-center text-sm">
+          <div className="relative flex justify-center text-xs sm:text-sm">
             <span className="bg-white px-2 text-black">OR</span>
           </div>
         </div>
 
         {/* Google Signup */}
-        <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-3 mb-3 hover:bg-gray-100 hover:shadow-md hover:shadow-yellow-500/30 transition-all duration-300">
-          <svg className="w-5 h-5" viewBox="0 0 24 24">
+        <button className="w-full flex items-center justify-center gap-2 text-sm sm:text-base border border-gray-300 rounded-md py-2 sm:py-3 mb-2 sm:mb-3 hover:bg-gray-100 hover:shadow-md hover:shadow-yellow-500/30 transition-all duration-300">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -73,9 +81,9 @@ const Login = () => {
         </button>
 
         {/* Apple Signup */}
-        <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-3 mb-6 hover:bg-gray-100 hover:shadow-md hover:shadow-yellow-500/30 transition-all duration-300">
+        <button className="w-full flex items-center justify-center gap-2 text-sm sm:text-base border border-gray-300 rounded-md py-2 sm:py-3 mb-4 sm:mb-6 hover:bg-gray-100 hover:shadow-md hover:shadow-yellow-500/30 transition-all duration-300">
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             id="apple"
@@ -86,15 +94,17 @@ const Login = () => {
         </button>
 
         {/* Log In Link */}
-        <p className="text-center text-sm text-black">Already have an account?
-          <Link href="#"
+        <p className="text-center text-xs sm:text-sm text-black">
+          Already have an account?
+          <Link
+            href="#"
             className="text-yellow-600 hover:underline hover:text-yellow-700"
           > Log in
           </Link>
         </p>
 
         {/* Cookie Preferences */}
-        <p className="text-center text-sm text-black mt-4">
+        <p className="text-center text-xs sm:text-sm text-black mt-3 sm:mt-4">
           <Link href="#" className="hover:underline hover:text-yellow-600">
             Cookie preferences
           </Link>

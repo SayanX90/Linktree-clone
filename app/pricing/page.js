@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
+
 const PricingSweet = () => {
-  // Array of pricing plans
   const pricingPlans = [
     {
       name: "Free",
@@ -68,51 +68,51 @@ const PricingSweet = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="min-h-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 flex flex-col items-center py-12">
-      {/* Header Section */}
-      <div className="text-center my-25">
-        <h1 className="text-5xl font-extrabold text-gray-800 mb-2 tracking-wide">
-          Discover Your Plan
-        </h1>
-        <p className="text-lg text-gray-600">
-          Sweet pricing for every ambition.
-        </p>
-      </div>
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-300 flex flex-col items-center py-8 sm:py-12">
+        {/* Header Section */}
+        <div className="text-center my-8 sm:my-12 px-4">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-800 mb-2 tracking-wide">
+            Discover Your Plan
+          </h1>
+          <p className="text-base sm:text-lg text-gray-600">
+            Sweet pricing for every ambition.
+          </p>
+        </div>
 
-      {/* Pricing Cards */}
-      <div className="flex justify-center gap-8 flex-wrap px-6">
-        {pricingPlans.map((plan, index) => (
-          <div
-            key={index}
-            className={`relative bg-white rounded-xl p-6 w-72 border-2 ${plan.borderColor} shadow-md transform transition-all duration-300 hover:scale-105 ${plan.hoverBorderColor} ${plan.hoverShadowColor}`}
-          >
-            {/* Popular Badge */}
-            {plan.isPopular && (
-          <span className="absolute top-2 right-2 bg-orange-400 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                Best Value
-              </span>
-            )}
-            <h2 className="text-xl font-bold text-gray-800">{plan.name}</h2>
-            <p className="text-gray-500 text-sm mt-1">{plan.description}</p>
-            <p className="text-3xl font-bold text-gray-800 my-3">
-              {plan.price}
-            </p>
-            <p className="text-gray-500 text-sm">{plan.billing}</p>
-            <button className="bg-gray-800 text-white rounded-full px-6 py-2 mt-4 w-full text-sm hover:bg-blue-600 transition-colors">
-              Select Plan
-            </button>
-            <ul className="text-sm text-gray-600 mt-4 space-y-2">
-              {plan.features.map((feature, featureIndex) => (
-                <li key={featureIndex} className="flex items-center">
-                  <span className="text-pink-500 mr-2">✨</span> {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Pricing Cards */}
+        <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 flex-wrap px-4 sm:px-6">
+          {pricingPlans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative bg-white rounded-xl p-6 w-full sm:w-72 border-2 ${plan.borderColor} shadow-md transform transition-all duration-300 hover:scale-105 ${plan.hoverBorderColor} ${plan.hoverShadowColor}`}
+            >
+              {/* Popular Badge */}
+              {plan.isPopular && (
+                <span className="absolute top-2 right-2 bg-orange-400 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                  Best Value
+                </span>
+              )}
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800">{plan.name}</h2>
+              <p className="text-gray-500 text-sm mt-1">{plan.description}</p>
+              <p className="text-2xl sm:text-3xl font-bold text-gray-800 my-3">
+                {plan.price}
+              </p>
+              <p className="text-gray-500 text-sm">{plan.billing}</p>
+              <button className="bg-gray-800 text-white rounded-full px-4 sm:px-6 py-2 mt-4 w-full text-sm sm:text-base hover:bg-blue-600 transition-colors">
+                Select Plan
+              </button>
+              <ul className="text-sm text-gray-600 mt-4 space-y-2">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center">
+                    <span className="text-pink-500 mr-2">✨</span> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };

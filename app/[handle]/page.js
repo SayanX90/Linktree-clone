@@ -1,74 +1,69 @@
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import clientPromise from "@/lib/mongodb"
+import clientPromise from "@/lib/mongodb";
 
 export default async function Page({ params }) {   //dynamic route
-  const { handle } = await params; 
-  
+  const { handle } = params;
+
   const client = await clientPromise;
   const db = client.db("bittree");
   const collection = db.collection("link");
 
-  const loc = await collection.findOne({ handle:handle });
-      if(!loc){
-        return notFound()
-    }
-
-    console.log(loc);
-
-
-  // Pic up form MongoDB data (as per your example)
-  const obj = {
-    _id: {
-      $oid: "6822d82f94521f584fa33037",
-    },
-    links: [
-      {
-        link: "https://www.youtube.com/",
-        linktext: "youtube",
-      },
-      {
-        link: "https://www.facebook.com",
-        linktext: "facebook",
-      },
-    ],
-    handle: "sayan",
-    pic: "https://pbs.twimg.com/profile_images/1896446481919299584/kHq63qsK_bigger.jpg",
-  };
+  const loc = await collection.findOne({ handle: handle });
+  if (!loc) {
+    return notFound();
+  }
 
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-red-200 to-yellow-200 p-4">
-        <div className="flex flex-col items-center justify-center">
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
+        <div className="flex flex-col items-center justify-center w-full max-w-md bg-white/10 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 border border-white/30">
           {/* Profile Picture */}
-          <img
-            src={obj.pic}
-            //alt={`${obj.handle}'s profile picture`}
-            className="w-28 h-28 rounded-full object-cover shadow-lg"
-          />
+          {loc.pic && (
+            <div className="relative group">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-400 to-purple-400 blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
+              <img
+                src={loc.pic}
+                alt={`${loc.handle}'s profile picture`}
+                className="relative w-28 h-28 rounded-full object-cover shadow-lg border-4 border-white/60 transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          )}
 
           {/* Handle */}
-          <span className="mt-4 text-3xl font-bold text-gray-900 hover:text-yellow-600 transition-colors duration-300">
-            @{obj.handle}
+          <span className="mt-4 text-3xl font-extrabold text-gray-900 drop-shadow-sm">
+            @{loc.handle}
           </span>
 
           {/* Links */}
-          <div className="mt-6 w-full max-w-xs space-y-3">
-
-            {obj.links.map((i, index) => {
-              return (
-                <Link key={index} href={i.link}>
-                  <div className="text-black bg-slate-100 font-semibold text-center hover:bg-yellow-300 hover:text-gray-800 transition-all duration-300 backdrop-blur-sm py-4 shadow-lg px-2 min-w-96 flex justify-center rounded-md my-3">
-                    {i.linktext}
-                  </div>
-                </Link>
-              );
-            })}
+          <div className="mt-8 w-full flex flex-col gap-4">
+            {loc.links.map((item, index) => (
+              <Link key={index} href={item.link} target="_blank">
+                <div
+                  className="flex items-center justify-center text-lg font-semibold 
+                             text-center py-3 px-6 rounded-xl shadow-lg border border-white/20
+                             bg-gradient-to-r from-purple-500 via-pink-500 to-red-400 text-white
+                             hover:scale-105 hover:shadow-xl transition-all duration-300
+                             w-full min-h-[50px] sm:min-h-[60px]"
+                > {item.linktext}
+                </div>
+              </Link>
+            ))}
           </div>
-        </div>
 
+          {/* Back Button */}
+          <Link
+            href="/"
+            className="mt-6 inline-flex items-center gap-2 px-5 py-2 text-sm font-medium 
+                       text-purple-900 bg-purple-100 rounded-full shadow-sm 
+                       hover:bg-purple-200 hover:shadow-md hover:scale-105 transition-all duration-200"
+          >
+            <span className="text-lg">←</span>
+            Back to Home
+          </Link>
+        </div>
       </div>
     </>
   );
