@@ -134,19 +134,23 @@ const GenerateClient = () => {
                 />
 
                 {/* Hidden file input */}
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="pictureUpload"
-                  className="hidden"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const imageUrl = URL.createObjectURL(file);
-                      setPic(imageUrl);
-                    }
-                  }}
-                />
+  <input
+    type="file"
+    accept="image/*"
+    id="pictureUpload"
+    className="hidden"
+    onChange={(e) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Convert file to Base64 so it persists
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPic(reader.result); // Base64 string
+        };
+        reader.readAsDataURL(file);
+      }
+    }}
+  />
 
                 {/* Camera emoji instead of 📎 */}
                 <label
