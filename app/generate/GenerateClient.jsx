@@ -1,5 +1,3 @@
-
-
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -134,30 +132,30 @@ const GenerateClient = () => {
                 />
 
                 {/* Hidden file input */}
-  <input
-    type="file"
-    accept="image/*"
-    id="pictureUpload"
-    className="hidden"
-    onChange={(e) => {
-      const file = e.target.files[0];
-      if (file) {
-        // Convert file to Base64 so it persists
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setPic(reader.result); // Base64 string
-        };
-        reader.readAsDataURL(file);
-      }
-    }}
-  />
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="pictureUpload"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      // Convert file to Base64 so it persists
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        setPic(reader.result); // Base64 string
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />
 
                 {/* Camera emoji instead of 📎 */}
                 <label
                   htmlFor="pictureUpload"
                   className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-purple-600 text-lg"
                   title="Attach from device"
-                > 📷
+                >📷
                 </label>
               </div>
 
@@ -171,10 +169,10 @@ const GenerateClient = () => {
               )}
 
               <button
-                disabled={ pic === "" || handle === "" || links[0].linktext === "" }
+                disabled={pic === "" || handle === "" || links[0].linktext === ""}
                 onClick={submitLink}
                 className="w-full p-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl shadow-md hover:from-purple-700 hover:to-indigo-700 disabled:bg-slate-500 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 font-medium"
-              > Create your Link
+              >  Create your Link
               </button>
 
               <button
@@ -213,9 +211,6 @@ const GenerateClient = () => {
 };
 
 export default GenerateClient;
-
-
-
 
 // "use client";
 // import Link from "next/link";
